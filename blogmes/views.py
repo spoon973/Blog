@@ -1,0 +1,82 @@
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.db.models import Max,Min
+from blogmes.models import Post, Tag, Category
+
+# Create your views here.
+
+def index(request):
+    '''首页视图'''
+    posts = Post.objects.all()
+    return render(request, 'index.html', {'posts': posts})
+    # return HttpResponse('ok')
+
+def particulars(request):
+    '''详情页视图'''
+    # 判断请求是否为get请求
+    if request.method == "GET":
+        # 查询要访问的详情id
+        id = request.GET.get('id')
+        # 根据id查询数据库数据
+        post = Post.objects.get(id=id)
+        # 查询数据库该模型类的最大值
+        max_id = Post.objects.aggregate(Max('id'))
+        # 查询数据库该模型类的最小值
+        min_id = Post.objects.aggregate(Min('id'))
+        # 创建变量保存返给页面的数据
+        mes = {'post': post, 'max_id': max_id, 'min_id': min_id}
+        return render(request, 'info.html', mes)
+
+def tag(request):
+    '''标签视图'''
+    # 获取get请求中的id参数
+    if request.method == "GET":
+        # 获取get请求中参数的值
+        tag_id = request.GET.get('id')
+        # 通过传过来的标签id值查询到标签模型中的对象
+        tag = Tag.objects.get(id=tag_id)
+        # 查询对应的类别
+        category = tag.category
+        # 查询对应的文章
+        posts = tag.post_set.all()
+        # 创建mes字典，存放返回html的数据
+        mes = {}
+        # 判断category类别是否为空
+        if category != None:
+            mes['category'] = category
+        # 向mes字典增添数据
+        mes['posts'] = posts
+        mes['tag'] = tag
+        # 返回页面
+        print('---------->', mes)
+        return render(request, 'tag_list.html', mes)
+
+def category(request):
+    '''标签视图'''
+    # 获取get请求中的id参数
+    if request.method == "GET":
+        # 获取get请求中参数的值
+        category_id = request.GET.get('id')
+        # 通过传过来的标签id值查询到标签模型中的对象
+        category = Category.objects.get(id=category_id)
+        # 查询对应的标签
+        tags = category.tag_set.all()
+        # 查询对应的文章
+        posts = category.post_set.all()
+        mes = {'category': category, 'tags': tags, 'posts': posts}
+        return render(request, 'category_list.html', mes)
+
+
+
+
+
+def about(request):
+    '''关于'''
+    # 判断请求是否为get请求
+    if request.method == "GET":
+        # 查询要访问的详情id
+        id = request.GET.get('id')
+        # 根据id查询数据库数据
+        post = Post.objects.get(id=id)
+        print('----->',post)
+        return render(request, 'text.html',{'post': post})
