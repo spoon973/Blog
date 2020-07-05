@@ -1,18 +1,18 @@
+{%load filters%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>首页_杨青个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
-<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
-<meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/static/css/base.css" rel="stylesheet">
-<link href="/static/css/index.css" rel="stylesheet">
-<link href="/static/css/m.css" rel="stylesheet">
-<!--[if lt IE 9]>
-<script src="/static/js/modernizr.js"></script>
-<![endif]-->
-<script src="/static/js/page.js"></script>
+    <meta charset="utf-8">
+    <title>首页_杨青个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
+    <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/base.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link href="/static/css/m.css" rel="stylesheet">
+    <script src="/static/js/modernizr.js"></script>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/js/recommend.js"></script>
 </head>
 <body>
 <header>
@@ -46,57 +46,77 @@
 
 <div class="line46"></div>
 <article>
-  <div class="pics">
-    <ul>
-      <li><i><a href="/"><img src="/static/images/t01.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
-      <li><i><a href="/"><img src="/static/images/t04.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
-      <li><i><a href="/"><img src="/static/images/t03.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
-    </ul>
-  </div>
-  <div class="blank"></div>
-  <div class="leftbox">
-    <div class="tuijian">
-      <h2 class="hometitle"><span><a href="/">模板分享</a><a href="/">学无止境</a><a href="/">慢生活</a><a href="/">热门标签</a></span>特别推荐</h2>
-      <ul>
-        <li>
-          <div class="tpic"><img src="/static/images/b01.png"></div>
-          <b>6条网页设计配色原则,让你秒变配色高手</b><span>网页设计好不好看,颜色是毋庸置疑要排首位的,所以关于颜色的搭配技巧以及原则,对于每一个要学习web前端设计的新手来说,这都是一个重要的学习过程.在本教程中我们将与你分享...</span><a href="/" class="readmore">阅读原文</a></li>
-        <li>
-          <div class="tpic"><img src="/static/images/b02.jpg"></div>
-          <b>作为一个设计师,如果遭到质疑你是否能恪守自己的原则</b><span>就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义...</span><a href="/" class="readmore">阅读原文</a></li>
-        <li>
-          <div class="tpic"><img src="/static/images/b03.jpg"></div>
-          <b>愿有人陪你一起颠沛流离</b><span>有一天晚上我收到朋友的邮件，他问我怎样可以最快地摆脱寂寞，我想了想不知道应该怎么回答他，因为我从来没有摆脱过这个问题，我只能去习惯它，就像习惯身体的一部分...</span><a href="/" class="readmore">阅读原文</a></li>
-        <li>
-          <div class="tpic"><img src="/static/images/b04.jpg"></div>
-          <b>你要去相信，没有到不了的明天</b><span>不管你现在是一个人走在异乡的街道上始终没有找到一丝归属感，还是你在跟朋友们一起吃饭开心地笑着的时候闪过一丝落寞。...</span><a href="/" class="readmore">阅读原文</a></li>
-        <li>
-          <div class="tpic"><img src="/static/images/b05.jpg"></div>
-          <b>美丽的茧</b><span>让世界拥有它的脚步，让我保有我的茧。当溃烂已极的心灵再不想做一丝一毫的思索时，就让我静静回到我的茧内，以回忆为睡榻，以悲哀为覆被，这是我唯一的美丽。...</span><a href="/" class="readmore">阅读原文</a></li>
-        <li>
-          <div class="tpic"><img src="/static/images/b01.png"></div>
-          <b>6条网页设计配色原则,让你秒变配色高手</b><span>网页设计好不好看,颜色是毋庸置疑要排首位的,所以关于颜色的搭配技巧以及原则,对于每一个要学习web前端设计的新手来说,这都是一个重要的学习过程.在本教程中我们将与你分享...</span><a href="/" class="readmore">阅读原文</a></li>
-      </ul>
+    <div class="pics">
+        <ul>
+            <li><i><a href="/"><img src="/static/images/t01.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
+            <li><i><a href="/"><img src="/static/images/t04.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
+            <li><i><a href="/"><img src="/static/images/t03.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
+        </ul>
     </div>
-    <div class="newblogs">
-      <h2 class="hometitle">最新文章</h2>
-      <ul id="list" style="display:none;">
-          {% for post in posts %}
-              <li>
-                  <h3 class="blogtitle"><a href="/" target="_blank" >{{ post.title }}</a></h3>
-                  <div class="bloginfo"><span class="blogpic"><a href="/post?id={{ post.id }}" title=""><img src="/static/media/{{ post.pic }}" alt="文章页面图片"/></a></span>
-                      <a href="/post?id={{ post.id }}"><p>{{ post.excerpt }}...</p></a>
-                  </div>
-                  <div class="autor"><span class="lm f_l"><a href="/">王鹏飞个人博客</a></span><span class="dtime f_l">{{ post.create_time }}</span><span class="viewnum f_l">浏览（<a href="/">{{ post.read }}</a>）</span><span class="pingl f_l">喜欢（<a href="/">{{ post.like }}</a>）</span><span class="f_r"><a href="/post?id={{ post.id }}" class="more">阅读原文</a></span></div>
-              </li>
-          {% endfor %}
-      </ul>
-      <ul id="list2">
-      </ul>
-      <script src="/static/js/page2.js"></script> 
+    <div class="blank"></div>
+    <div class="leftbox">
+        <div class="tuijian">
+            <h2 class="hometitle">
+                <span>
+                    {% for category in categorys %}
+                        <a href="javascript:void(0)">
+                            {{ category.name }}
+                        </a>
+                    {% endfor %}
+                </span>特别推荐
+            </h2>
+            <ul>
+                {% for recommend_post in recommend_posts|slice:3 %}
+                    <a href="/post?id={{ recommend_post.id }}">
+                        <li>
+                            <div class="tpic"><img src="/static/media/{{ recommend_post.pic }}"></div>
+                            <b>{{ recommend_post.title }}</b><span>{{ recommend_post.excerpt }}</span><a href="/post?id={{ recommend_post.id }}" class="readmore">阅读原文</a>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="newblogs">
+            <h2 class="hometitle">最新文章</h2>
+            <ul id="list">
+                {% for post in page %}
+                    <li>
+                        <h3 class="blogtitle"><a href="/" target="_blank" >{{ post.title }}</a></h3>
+                        <div class="bloginfo"><span class="blogpic"><a href="/post?id={{ post.id }}" title=""><img src="/static/media/{{ post.pic }}" alt="文章页面图片"/></a></span>
+                          <a href="/post?id={{ post.id }}"><p>{{ post.excerpt }}...</p></a>
+                        </div>
+                        <div class="autor"><span class="lm f_l"><a href="/">王鹏飞个人博客</a></span><span class="dtime f_l">{{ post.create_time }}</span><span class="viewnum f_l">浏览（<a href="/">{{ post.read }}</a>）</span><span class="pingl f_l">喜欢（<a href="/">{{ post.like }}</a>）</span><span class="f_r"><a href="/post?id={{ post.id }}" class="more">阅读原文</a></span></div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="page_id"
+                 style="text-align: center;
+                        font:normal 18px/16px 'Microsoft YaHei';
+                        height: 18px">
+            {# 判断是否有上一页 #}
+            {% if page.has_previous %}
+                <a href="/index{{ page.previous_page_number }}">&lt;上一页</a>
+            {% endif %}
+
+            {# 遍历显示页码的链接 #}
+            {% for pindex in page.paginator.page_range %}
+                {# 判断是否是当前页 #}
+                {% if pindex == page.number %}
+                    {{ pindex }}
+                {% else %}
+                    <a href="/index{{ pindex }}">{{ pindex }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {# 判断是否有下一页 #}
+            {% if page.has_next %}
+                <a href="/index{{ page.next_page_number }}">下一页&gt;</a>
+            {% endif %}
+        </div>
+        </div>
     </div>
-  </div>
-  <div class="rightbox">
+
+    <div class="rightbox">
     <div class="aboutme">
       <h2 class="ab_title">关于我</h2>
       <div class="avatar"><img src="/static/images/b04.jpg" /></div>
@@ -120,29 +140,25 @@
     <div class="paihang">
       <h2 class="ab_title"><a href="/">点击排行</a></h2>
       <ul>
-        <li><b><a href="/jstt/css3/2018-03-20/808.html" target="_blank">十条设计原则教你学会如何设计网页布局!...</a></b>
-          <p><i><img src="/static/images/b01.png"></i>网页常见的布局有很多种,单列布局,多列布局.其中单列布局是国外很多网站比较常用的.咱们很多站长以及门户...</p>
-        </li>
-        <li><b><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></b>
-          <p><i><img src="/static/images/b02.jpg"></i>对于刚毕业的学生来说，想学习建网站，掌握一技之长，最简单的入门...</p>
-        </li>
-        <li><b><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码</a></b>
-          <p><i><img src="/static/images/b03.jpg"></i>先前发表过一篇文章《如果要学习web前端开发，需要学习什么？》</p>
-        </li>
-        <li><b><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></b>
-          <p><i><img src="/static/images/b04.jpg"></i>对于刚毕业的学生来说，.需要学习什么？》</p>
-        </li>
-        <li><b><a href="/" target="_blank">你面对的是生活而不是手机</a></b>
-          <p><i><img src="/static/images/b05.jpg"></i>最简单的入门无非就是学会html和css，先前发表过一篇文章...</p>
-        </li>
+          {% for recommend_post in recommend_posts|slice:5 %}
+              <li  style="height: 122px;overflow: hidden">
+                  <b>
+                      <a href="/post?id={{ recommend_post.id }}" target="_blank">{{ recommend_post.title }}</a>
+                  </b>
+                  <p>
+                      <i><img src="/static/media/{{ recommend_post.pic }}"></i>
+                      <p>{{ recommend_post.excerpt }}</p>
+                  </p>
+              </li>
+          {% endfor %}
       </ul>
     </div>
     <div class="links">
       <h2 class="ab_title">友情链接</h2>
       <ul>
         <li><a href="/">杨青个人博客</a></li>
-        <li><a href="/">个人博客模板</a></li>
-        <li><a href="/">优秀个人博客</a></li>
+        <li><a href="/">杨青个人博客</a></li>
+        <li><a href="/">杨青个人博客</a></li>
       </ul>
     </div>
     <div class="weixin">

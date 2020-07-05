@@ -19,3 +19,6 @@ def title_next(id):
     post = Post.objects.get(id=id+1)
     return post.title
 
+@register.filter
+def slice(posts, value):
+    return posts[:value]

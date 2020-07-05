@@ -35,7 +35,7 @@
 .zsm { display: block }
 .zsm img { width: 200px; margin: auto }
 .ffsm p img { position: inherit; float: none; }
-.pagelist a { margin: 0x; border: 0; padding: 5px 0px; }
+.pagelist a { margin: 0; border: 0; padding: 5px 0; }
 .pagelist > b { padding: 0; border: 0; }
 }
 @media only screen and (max-width: 479px) {
@@ -61,6 +61,6 @@
 .news_infos img { width: 100% }
 .otherlink li { width: 90%; height: auto }
 .ffsm p img { position: inherit; float: none; }
-.pagelist a { margin: 0x; border: 0; padding: 5px 0px; }
+.pagelist a { margin: 0; border: 0; padding: 5px 0; }
 .pagelist > b { padding: 0; border: 0; }
 }
