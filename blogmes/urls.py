@@ -5,7 +5,6 @@ app_name = 'blogmes'
 
 urlpatterns = [
     re_path('index(?P<pindex>\d*)$', views.index, name='index'),  # 首页视图的url路径
-    path('recommend', views.recommend, name='recommend'),  # 类别名称视图
 
     path('post', views.particulars, name='particulars'),  # 详情页视图
     path('category',views.category, name='category'),  # 类别访问路径

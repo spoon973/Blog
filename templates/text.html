@@ -7,27 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function () {
+            text = $('#a').text();
+            $('#a').click(function () {
+                $.ajax({
+                    "url": '/text2',
+                    'type': 'get',
+                    'data':{'mes': text},
+                    'dataType':'json',
+                    'async':false,
+                }).success(function (data) {
+                    text = data.mes;
+                })
+            })
+        })
 
+    </script>
 </head>
 <body>
     <a href="javascript:void(0);" id="a">你好</a>
-    <script>
-        mes = $('#a').text();
-
-        $('#a').click(function () {
-            $.ajax({
-                "url": '/text2',
-                'type': 'get',
-                'data':{'mes': mes},
-                'dataType':'json',
-                'async':false,
-            }).success(function (data) {
-                mes = data.mes;
-                return mes
-            });
-            return mes
-        })
-    </script>
     <p>{{ mes }}</p>
 </body>
 </html>

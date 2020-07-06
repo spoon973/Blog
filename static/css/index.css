@@ -2,15 +2,22 @@
 .leftbox { width: 70%; float: left; overflow: hidden;}
 .rightbox { width: 28%; float: right; overflow: hidden; }
 /*图片*/
-.pics { margin: 20px 0 0 0; overflow: hidden }
-.pics ul li { width: 32.3%; float: left; display: block; overflow: hidden; border-radius: 5px; position: relative; }
+.pics { margin: 20px 0 0 0; width: 1100px; position: relative; left: 0; top:0;}
+
+.pics ul{width: 2200px; height:155px; float: left; position: relative; top: 0; left: 0;overflow: hidden}
+.pics ul li { width: 352.5px; float: left; display: block; overflow: hidden; border-radius: 5px; position: relative; }
+
 .pics ul li i { display: block; height: 155px; }
 .pics ul li:nth-child(2) { margin: 0 0 0 17px }
-.pics ul li:nth-child(3) { float: right }
+.pics ul li:nth-child(3) { margin: 0 0 0 17px }
+.pics ul li:nth-child(4) { margin: 0 0 0 17px }
+.pics ul li:nth-child(5) { margin: 0 0 0 17px }
+.pics ul li:nth-child(6) { margin: 0 0 0 17px }
+/*.pics ul li:nth-child(6) { float: right }*/
 .pics ul li img { margin: auto; min-height: 100%; min-width: 100%; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; transition: all .5s ease;}
 .pics ul li span { position: absolute; background: rgba(0,0,0,0.8); color: #FFF; bottom: 8%; left: 0; right: 0; display: block; padding: 0 15px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; line-height: 30px;  }
 .pics ul li:hover img { transform: scale(1.05) }
-/*详情页导航栏*/
+ /*详情页导航栏*/
 .hometitle { padding: 0 10px; line-height: 40px; height: 40px; font-size: 18px; ; border-bottom: #000 2px solid; position: relative; }
 .hometitle span { float: right; font-weight: normal; font-size: 14px; height: 42px; overflow: hidden; position: absolute; right: 0; width: 100%; text-align: right }
 .hometitle span a { display: block; float: right; position: relative; overflow: hidden; margin-right: 20px }

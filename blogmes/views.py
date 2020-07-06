@@ -3,45 +3,59 @@ from django.shortcuts import render
 from django.db.models import Max,Min
 from django.core import serializers
 from django.core.paginator import Paginator
+from django.template import Context, loader, RequestContext
+from django.template.loader import get_template
+
 from blogmes.models import Post, Tag, Category
 
 # Create your views here.
+# 创建全局变量,记录当前博客页面的页数
+index_page = None
 
-def index(request, pindex, category_recommend=None):
+def index(request, pindex):
     '''首页视图'''
-    # 按阅读量做排行,查询出由多到少的文章,作为推荐文章
-    recommend_posts = Post.objects.order_by('-read')
+    # 使用全局变量
+    global index_page
+    # 判断是否存在get请求cg(category - 推荐)变量参数
+    if request.GET.get('cg'):
+        # 获取参数中推荐类别的id
+        category_id = int(request.GET.get('cg'))
+        # 如果id值为0,展示默认首席推荐
+        if category_id == 0:
+            recommend_posts = Post.objects.order_by('-read')
+        else:
+            # 从数据库中查询该条件的文章内容
+            category = Category.objects.get(id = category_id)
+            recommend_posts = category.post_set.all()
+        # 还是用当前页面的也说,不重新加载页数(默认为 1)
+        pindex = index_page
+    # 为正常请求index页面
+    else:
+        # 获取请求中的pindex信息
+        try:  # 如果pindex为触发异常,except捕获异常
+            # 获取index页面的内容
+            pindex = int(pindex)
+            # 将当前页面的值赋值给全局变量,以备推荐路径使用
+            index_page = pindex
+        except:
+            # 默认pindex为首页
+            pindex = 1
+            index_page = pindex
+        # 正常查询推荐文章
+        recommend_posts = Post.objects.order_by('-read')
     # 查询出后台所有文章信息
     new_posts = Post.objects.order_by('-create_time')
     # 获取所有分类
     categorys = Category.objects.all()
+    # 获取排行榜文章
+    Ranking_posts = Post.objects.order_by('-read')
     # 分页，每页显示7条信息
     paginator = Paginator(new_posts, 7)
-    # 获取请求中的pindex信息
-    try:  # 如果pindex为触发异常,except捕获异常
-        # 获取index页面的内容
-        pindex = int(pindex)
-    except:
-        # 默认pindex为首页
-        pindex = 1
+    # 获取当前页面的对象
     page =paginator.page(pindex)
     # 创建变量，保存返回页面的数据
-    mes = {'page': page, 'recommend_posts': recommend_posts, 'categorys': categorys}
-
+    mes = {'page': page, 'Ranking_posts': Ranking_posts,'recommend_posts': recommend_posts, 'categorys': categorys}
     return render(request, 'index.html', mes)
-
-def recommend(request):
-    '''推荐类别视图'''
-    recommend_name = request.GET.get('recommend_name')
-    recommend_name = "".join(recommend_name.split())
-    # print(len(recommend_name))
-    category = Category.objects.get(name=recommend_name)
-    posts = category.post_set.all()
-
-    # index(category_recommend=posts)
-
-    posts = serializers.serialize("json",category.post_set.all())
-    return JsonResponse({'posts': posts})
 
 def particulars(request):
     '''详情页视图'''
@@ -84,7 +98,7 @@ def tag(request):
         return render(request, 'tag_list.html', mes)
 
 def category(request):
-    '''标签视图'''
+    '''分类视图'''
     # 获取get请求中的id参数
     if request.method == "GET":
         # 获取get请求中参数的值
@@ -98,11 +112,13 @@ def category(request):
         mes = {'category': category, 'tags': tags, 'posts': posts}
         return render(request, 'category_list.html', mes)
 
+
+
 def text1(request):
     category = Category.objects.get(name="科技")
     posts = category.post_set.all()
     print('----->', posts)
-    return render(request,'text.html')
+    return render(request,'text.html', {'mes': '000'})
 
 def text2(request):
     mes = request.GET.get('mes') + 'lalala'
