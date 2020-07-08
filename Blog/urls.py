@@ -18,6 +18,8 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 添加富文本tinyme路径
+    path('mdeditor/', include('mdeditor.urls')),
     # blogmes应用的urls路径
     path('', include(('blogmes.urls', 'blogmes'), namespace='blogmes')),
 ]

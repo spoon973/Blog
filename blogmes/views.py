@@ -1,12 +1,10 @@
-from django.http import HttpResponse,JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.db.models import Max,Min
-from django.core import serializers
+from django.db.models import Max, Min
 from django.core.paginator import Paginator
-from django.template import Context, loader, RequestContext
-from django.template.loader import get_template
+import markdown
 
-from blogmes.models import Post, Tag, Category
+from blogmes.models import Specific_Post, Tag, Category
 
 # Create your views here.
 # 创建全局变量,记录当前博客页面的页数
@@ -22,11 +20,11 @@ def index(request, pindex):
         category_id = int(request.GET.get('cg'))
         # 如果id值为0,展示默认首席推荐
         if category_id == 0:
-            recommend_posts = Post.objects.order_by('-read')
+            recommend_posts = Specific_Post.objects.order_by('-read')
         else:
             # 从数据库中查询该条件的文章内容
             category = Category.objects.get(id = category_id)
-            recommend_posts = category.post_set.all()
+            recommend_posts = category.specific_post_set.all()
         # 还是用当前页面的也说,不重新加载页数(默认为 1)
         pindex = index_page
     # 为正常请求index页面
@@ -42,13 +40,13 @@ def index(request, pindex):
             pindex = 1
             index_page = pindex
         # 正常查询推荐文章
-        recommend_posts = Post.objects.order_by('-read')
+        recommend_posts = Specific_Post.objects.order_by('-read')
     # 查询出后台所有文章信息
-    new_posts = Post.objects.order_by('-create_time')
+    new_posts = Specific_Post.objects.order_by('-create_time')
     # 获取所有分类
     categorys = Category.objects.all()
     # 获取排行榜文章
-    Ranking_posts = Post.objects.order_by('-read')
+    Ranking_posts = Specific_Post.objects.order_by('-read')
     # 分页，每页显示7条信息
     paginator = Paginator(new_posts, 7)
     # 获取当前页面的对象
@@ -64,11 +62,17 @@ def particulars(request):
         # 查询要访问的详情id
         id = request.GET.get('id')
         # 根据id查询数据库数据
-        post = Post.objects.get(id=id)
+        post = Specific_Post.objects.get(id=id)
+        post.content = markdown.markdown(post.content,
+                                  extensions=[
+                                      'markdown.extensions.extra',
+                                      'markdown.extensions.codehilite',
+                                      'markdown.extensions.toc',
+                                  ])
         # 查询数据库该模型类的最大值
-        max_id = Post.objects.aggregate(Max('id'))
+        max_id = Specific_Post.objects.aggregate(Max('id'))
         # 查询数据库该模型类的最小值
-        min_id = Post.objects.aggregate(Min('id'))
+        min_id = Specific_Post.objects.aggregate(Min('id'))
         # 创建变量保存返给页面的数据
         mes = {'post': post, 'max_id': max_id, 'min_id': min_id}
         return render(request, 'info.html', mes)
@@ -84,7 +88,7 @@ def tag(request):
         # 查询对应的类别
         category = tag.category
         # 查询对应的文章
-        posts = tag.post_set.all()
+        posts = tag.specific_post_set.all()
         # 创建mes字典，存放返回html的数据
         mes = {}
         # 判断category类别是否为空
@@ -94,7 +98,6 @@ def tag(request):
         mes['posts'] = posts
         mes['tag'] = tag
         # 返回页面
-        print('---------->', mes)
         return render(request, 'tag_list.html', mes)
 
 def category(request):
@@ -108,10 +111,9 @@ def category(request):
         # 查询对应的标签
         tags = category.tag_set.all()
         # 查询对应的文章
-        posts = category.post_set.all()
+        posts = category.specific_post_set.all()
         mes = {'category': category, 'tags': tags, 'posts': posts}
         return render(request, 'category_list.html', mes)
-
 
 
 def text1(request):

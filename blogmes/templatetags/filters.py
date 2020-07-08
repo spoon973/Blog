@@ -10,13 +10,13 @@ register = Library()
 @register.filter
 def title_last(id):
     '''当前id的上一条数据信息'''
-    post = Post.objects.get(id=id-1)
+    post = Specific_Post.objects.get(id=id-1)
     return post.title
 
 @register.filter
 def title_next(id):
     '''当前id的下一条数据信息'''
-    post = Post.objects.get(id=id+1)
+    post = Specific_Post.objects.get(id=id+1)
     return post.title
 
 @register.filter
