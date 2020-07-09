@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 添加编辑器应用
-    'mdeditor',
-    'blogmes',
+    'mdeditor',  # 添加编辑器应用
+    'blogmes',  # 博客具体数据应用
+    'transferfiles'  # 上传/下载文件应用
 ]
 
 MIDDLEWARE = [
@@ -124,4 +124,5 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-MEDIA_ROOT = [os.path.join(BASE_DIR, '/static/media')]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  #uploads必须存在，且在项目目录下
+MEDIA_URL = '/media/'   #你上传的文件和图片会默认存在/uploads/editor下

@@ -1,5 +1,6 @@
  @charset "gb2312";
 .leftbox { width: 70%; float: left; overflow: hidden;}
+.banner_leftbox { width: 80%; margin:auto; overflow: hidden;}
 .rightbox { width: 28%; float: right; overflow: hidden; }
 /*图片*/
 .pics { margin: 20px 0 0 0; width: 1100px; position: relative; left: 0; top:0;}
@@ -14,8 +15,8 @@
 .pics ul li:nth-child(5) { margin: 0 0 0 17px }
 .pics ul li:nth-child(6) { margin: 0 0 0 17px }
 /*.pics ul li:nth-child(6) { float: right }*/
-.pics ul li img { margin: auto; min-height: 100%; min-width: 100%; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; transition: all .5s ease;}
-.pics ul li span { position: absolute; background: rgba(0,0,0,0.8); color: #FFF; bottom: 8%; left: 0; right: 0; display: block; padding: 0 15px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; line-height: 30px;text-align: center}
+.pics ul li img { width: 100%; height: 100%; margin: auto; min-height: 100%; min-width: 100%; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; transition: all .5s ease;}
+.pics ul li span { position: absolute; background: rgba(0,0,2,0.6); color: #FFF; bottom: 8%; left: 0; right: 0; display: block; padding: 0 15px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; line-height: 30px; text-align: center;font-size: 16px}
 .pics ul li:hover img { transform: scale(1.05) }
  /*详情页导航栏*/
 .hometitle { padding: 0 10px; line-height: 40px; height: 40px; font-size: 18px; ; border-bottom: #000 2px solid; position: relative; }
@@ -25,6 +26,7 @@
 /*推荐*/
 .tuijian { background: #fff; overflow: hidden; width: 100%; clear: both; border-radius: 10px; }
 .tuijian ul { overflow: hidden; padding: 20px 10px; position: relative }
+
 .tuijian ul:before { content: ""; position: absolute; background: #fff; width: 1px; height: 100%; left: 10px }
 .tuijian ul:after { content: ""; position: absolute; background: #fff; width: 100%; height: 1px; bottom: 20px; left: 0; }
 .tuijian li { float: left; width: 27.6%; border-bottom: #ccc 1px solid; border-left: #ccc 1px solid; overflow: hidden; padding: 20px; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; transition: all .5s ease; }

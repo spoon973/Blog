@@ -4,7 +4,7 @@ from django.db.models import Max, Min
 from django.core.paginator import Paginator
 import markdown
 
-from blogmes.models import Specific_Post, Tag, Category
+from blogmes.models import Specific_Post, Tag, Category, Banner_Post
 
 # Create your views here.
 # 创建全局变量,记录当前博客页面的页数
@@ -26,7 +26,7 @@ def index(request, pindex):
             category = Category.objects.get(id = category_id)
             recommend_posts = category.specific_post_set.all()
         # 还是用当前页面的也说,不重新加载页数(默认为 1)
-        pindex = index_page
+        pindex = int(index_page)
     # 为正常请求index页面
     else:
         # 获取请求中的pindex信息
@@ -41,6 +41,8 @@ def index(request, pindex):
             index_page = pindex
         # 正常查询推荐文章
         recommend_posts = Specific_Post.objects.order_by('-read')
+    # 查询出轮播图的文章前3篇
+    ban_posts = Banner_Post.objects.order_by('-create_time')[:3]
     # 查询出后台所有文章信息
     new_posts = Specific_Post.objects.order_by('-create_time')
     # 获取所有分类
@@ -52,8 +54,24 @@ def index(request, pindex):
     # 获取当前页面的对象
     page =paginator.page(pindex)
     # 创建变量，保存返回页面的数据
-    mes = {'page': page, 'Ranking_posts': Ranking_posts,'recommend_posts': recommend_posts, 'categorys': categorys}
-    return render(request, 'index.html', mes)
+    mes = {'page': page,  # 分页
+           'Ranking_posts': Ranking_posts,  # 排行
+           'recommend_posts': recommend_posts,  # 分类展示文章
+           'categorys': categorys,  # 所有分类对象
+           'ban_posts': ban_posts}  # 轮播图文章
+    return render(request, 'blogmes/index.html', mes)
+
+def banner(request, bindex):
+    '''轮播图视图处理'''
+    # 根据获取的轮播图id,向后台数据库查询数据
+    ban_post = Banner_Post.objects.get(id=bindex)
+    ban_post.content = markdown.markdown(ban_post.content.replace("\r\n", '  \n'),
+                                     extensions=[
+                                         'markdown.extensions.extra',
+                                         'markdown.extensions.codehilite',
+                                         'markdown.extensions.toc',
+                                     ], safe_mode=True, enable_attributes=False)
+    return render(request, 'blogmes/banner_post.html', {'ban_post': ban_post})
 
 def particulars(request):
     '''详情页视图'''
@@ -63,19 +81,19 @@ def particulars(request):
         id = request.GET.get('id')
         # 根据id查询数据库数据
         post = Specific_Post.objects.get(id=id)
-        post.content = markdown.markdown(post.content,
+        post.content = markdown.markdown(post.content.replace("\r\n", '  \n'),
                                   extensions=[
                                       'markdown.extensions.extra',
                                       'markdown.extensions.codehilite',
                                       'markdown.extensions.toc',
-                                  ])
+                                  ],safe_mode=True,enable_attributes=False)
         # 查询数据库该模型类的最大值
         max_id = Specific_Post.objects.aggregate(Max('id'))
         # 查询数据库该模型类的最小值
         min_id = Specific_Post.objects.aggregate(Min('id'))
         # 创建变量保存返给页面的数据
         mes = {'post': post, 'max_id': max_id, 'min_id': min_id}
-        return render(request, 'info.html', mes)
+        return render(request, 'blogmes/post_info.html', mes)
 
 def tag(request):
     '''标签视图'''
@@ -98,7 +116,7 @@ def tag(request):
         mes['posts'] = posts
         mes['tag'] = tag
         # 返回页面
-        return render(request, 'tag_list.html', mes)
+        return render(request, 'blogmes/tag_list.html', mes)
 
 def category(request):
     '''分类视图'''
@@ -113,14 +131,10 @@ def category(request):
         # 查询对应的文章
         posts = category.specific_post_set.all()
         mes = {'category': category, 'tags': tags, 'posts': posts}
-        return render(request, 'category_list.html', mes)
-
+        return render(request, 'blogmes/category_list.html', mes)
 
 def text1(request):
-    category = Category.objects.get(name="科技")
-    posts = category.post_set.all()
-    print('----->', posts)
-    return render(request,'text.html', {'mes': '000'})
+    return render(request, 'blogmes/banner_post.html')
 
 def text2(request):
     mes = request.GET.get('mes') + 'lalala'

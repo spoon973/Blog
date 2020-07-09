@@ -1,59 +1,21 @@
-{%load filters%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>首页_王鹏飞个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
-    <meta name="keywords" content="个人博客,王鹏飞个人博客" />
-    <meta name="description" content="王鹏飞个人博客" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/css/base.css" rel="stylesheet">
-    <link href="/static/css/index.css" rel="stylesheet">
-    <link href="/static/css/m.css" rel="stylesheet">
-    <script src="/static/js/modernizr.js"></script>
-    <script src="/static/js/jquery-2.1.1.min.js"></script>
-    <script src="/static/js/banner.js"></script>
-    <script>
-        window.onload = function ()
-        {
-            var oH2 = document.getElementById("mnavh");
-            var oUl = document.getElementById("starlist");
-            oH2.onclick = function ()
-            {
-                var style = oUl.style;
-                style.display = style.display == "block" ? "none" : "block";
-                oH2.className = style.display == "block" ? "open" : ""
-            }
-        }
-    </script>
-</head>
-<body>
-<header>
-    <div id="mnav">
-        <div class="logo"><a href="/">王鹏飞个人博客</a></div>
-        <h2 id="mnavh"><span class="navicon"></span></h2>
-        <ul id="starlist">
-            <li><a href="/index">网站首页</a></li>
-            <li><a href="share.html">资料下载</a></li>
-            <li><a href="tag_list.html">学无止境</a></li>
-            <li><a href="info.html">经验分享</a></li>
-            <li><a href="shareinfo.html">分类区</a></li>
-            <li><a href="/about">关于我</a></li>
-            <li><a href="gbook.html">留言</a></li>
-        </ul>
-    </div>
-</header>
-
-<div class="line46"></div>
-<article>
+{% extends "base.html" %}
+{% block pic %}
     <div class="pics">
         <ul>
-            <li><i><a href="/a"><img src="/static/images/t02.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
-            <li><i><a href="/b"><img src="/static/images/t03.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
-            <li><i><a href="/c"><img src="/static/images/t04.jpg"></a></i><span>这组图片中的静物等非常的日系</span></li>
+            {% for ban_post in ban_posts %}
+                <li>
+                    <i>
+                        <a href="/banner/{{ ban_post.id }}">
+                            <img src="/media/{{ ban_post.pic }}">
+                        </a>
+                    </i>
+                    <span>{{ ban_post.title }}</span>
+                </li>
+            {% endfor %}
         </ul>
     </div>
-    <div class="blank"></div>
+{% endblock pic %}
+{% block leftbox %}
     <div class="leftbox">
         <div class="tuijian">
             <h2 class="hometitle">
@@ -70,10 +32,9 @@
             </h2>
             <ul>
                 {% for recommend_post in recommend_posts|slice:3 %}
-                    {{ lalala }}
                     <a href="/post?id={{ recommend_post.id }}">
                         <li>
-                            <div class="tpic"><img src="/static/media/{{ recommend_post.pic }}"></div>
+                            <div class="tpic"><img src="media/{{ recommend_post.pic }}"></div>
                             <b>{{ recommend_post.title }}</b><span>{{ recommend_post.excerpt }}</span><a href="/post?id={{ recommend_post.id }}" class="readmore">阅读原文</a>
                         </li>
                     </a>
@@ -86,7 +47,7 @@
                 {% for post in page %}
                     <li>
                         <h3 class="blogtitle"><a href="/" target="_blank" >{{ post.title }}</a></h3>
-                        <div class="bloginfo"><span class="blogpic"><a href="/post?id={{ post.id }}" title=""><img src="/static/media/{{ post.pic }}" alt="文章页面图片"/></a></span>
+                        <div class="bloginfo"><span class="blogpic"><a href="/post?id={{ post.id }}" title=""><img src="media/{{ post.pic }}" alt="文章页面图片"/></a></span>
                           <a href="/post?id={{ post.id }}"><p>{{ post.excerpt }}...</p></a>
                         </div>
                         <div class="autor"><span class="lm f_l"><a href="/">王鹏飞个人博客</a></span><span class="dtime f_l">{{ post.create_time }}</span><span class="viewnum f_l">浏览（<a href="/">{{ post.read }}</a>）</span><span class="pingl f_l">喜欢（<a href="/">{{ post.like }}</a>）</span><span class="f_r"><a href="/post?id={{ post.id }}" class="more">阅读原文</a></span></div>
@@ -119,6 +80,8 @@
         </div>
         </div>
     </div>
+{% endblock leftbox %}
+{% block rightbox %}
     <div class="rightbox">
     <div class="aboutme">
       <h2 class="ab_title">关于我</h2>
@@ -149,7 +112,7 @@
                       <a href="/post?id={{ recommend_post.id }}" target="_blank">{{ recommend_post.title }}</a>
                   </b>
                   <p>
-                      <i><img src="{{ recommend_post.pic }}"></i>
+                      <i><img src="media/{{ recommend_post.pic }}"></i>
                       <p>{{ recommend_post.excerpt }}</p>
                   </p>
               </li>
@@ -170,10 +133,4 @@
         <img src="/static/images/wx.jpg">
       </ul>
     </div>
-  </div>
-</article>
-<footer>
-  <p>Design by <a href="/">王鹏飞个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
-</footer>
-</body>
-</html>
+{% endblock rightbox %}
