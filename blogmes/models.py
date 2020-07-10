@@ -111,8 +111,9 @@ class Category(models.Model):
     # 创建元类
     class Meta:
         # 指定自定义数据库表名
-        db_table = 'Category'
+        db_table = 'PostCategory'
         # 给模型类起一个更可读的中文名
         verbose_name = '分类'
         # 指定模型的复数形式
         verbose_name_plural = verbose_name
+

@@ -1,7 +1,8 @@
-from django.http import JsonResponse
-from django.shortcuts import render
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render,redirect
 from django.db.models import Max, Min
 from django.core.paginator import Paginator
+from transferfiles.models import Category as TransferFileCategory
 import markdown
 
 from blogmes.models import Specific_Post, Tag, Category, Banner_Post
@@ -10,37 +11,35 @@ from blogmes.models import Specific_Post, Tag, Category, Banner_Post
 # 创建全局变量,记录当前博客页面的页数
 index_page = None
 
-def index(request, pindex):
+def index(request, pindex=None):
     '''首页视图'''
     # 使用全局变量
     global index_page
-    # 判断是否存在get请求cg(category - 推荐)变量参数
-    if request.GET.get('cg'):
-        # 获取参数中推荐类别的id
-        category_id = int(request.GET.get('cg'))
-        # 如果id值为0,展示默认首席推荐
-        if category_id == 0:
-            recommend_posts = Specific_Post.objects.order_by('-read')
-        else:
-            # 从数据库中查询该条件的文章内容
-            category = Category.objects.get(id = category_id)
-            recommend_posts = category.specific_post_set.all()
-        # 还是用当前页面的也说,不重新加载页数(默认为 1)
-        pindex = int(index_page)
-    # 为正常请求index页面
-    else:
-        # 获取请求中的pindex信息
-        try:  # 如果pindex为触发异常,except捕获异常
-            # 获取index页面的内容
-            pindex = int(pindex)
-            # 将当前页面的值赋值给全局变量,以备推荐路径使用
-            index_page = pindex
-        except:
-            # 默认pindex为首页
-            pindex = 1
-            index_page = pindex
+    # 获取请求中的pindex信息
+    try:  # 如果pindex为触发异常,except捕获异常
+        # 获取index页面的内容
+        pindex = int(pindex)
+        # 将当前页面的值赋值给全局变量,以备推荐路径使用
+        index_page = pindex
+    except:
+        # 默认pindex为首页
+        pindex = 1
+        index_page = pindex
+
+    category_name = request.session.get('category_name', "首席推荐")
+
+    print('------>', category_name)
+
+    if category_name == "首席推荐":
         # 正常查询推荐文章
         recommend_posts = Specific_Post.objects.order_by('-read')
+    else:
+        try:
+            category = Category.objects.get(name=category_name)
+            recommend_posts = category.specific_post_set.order_by('-read')
+        except:
+            recommend_posts = Specific_Post.objects.order_by('-read')
+            print("----->" + "数据库查询报错!!!")
     # 查询出轮播图的文章前3篇
     ban_posts = Banner_Post.objects.order_by('-create_time')[:3]
     # 查询出后台所有文章信息
@@ -60,6 +59,24 @@ def index(request, pindex):
            'categorys': categorys,  # 所有分类对象
            'ban_posts': ban_posts}  # 轮播图文章
     return render(request, 'blogmes/index.html', mes)
+
+def index_category(request):
+    # 获取ajax中category_name参数的内容
+    category_name = request.GET.get('category_name')
+    category_name = "".join(category_name.split())
+    print('----------->', category_name)
+    try:
+        # 清除seesion信息
+        request.session.clear()
+    except:
+        pass
+    # 设置cookie信息
+    # response.set_cookie('category_name', category_name)
+    # 设置session信息
+    request.session['category_name'] = category_name
+    # 设置session关闭窗口及删除
+    request.session.set_expiry(0)
+    return redirect('/index')
 
 def banner(request, bindex):
     '''轮播图视图处理'''
@@ -133,10 +150,4 @@ def category(request):
         mes = {'category': category, 'tags': tags, 'posts': posts}
         return render(request, 'blogmes/category_list.html', mes)
 
-def text1(request):
-    return render(request, 'blogmes/banner_post.html')
-
-def text2(request):
-    mes = request.GET.get('mes') + 'lalala'
-    return JsonResponse({'mes': mes})
 

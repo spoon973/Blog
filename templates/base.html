@@ -6,10 +6,12 @@
     <title>王鹏飞个人博客</title>
     <meta name="keywords" content="个人博客,王鹏飞个人博客" />
     <meta name="description" content="王鹏飞个人博客" />
+    <meta http-equiv="refresh" content="86400">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/css/base.css" rel="stylesheet">
     <link href="/static/css/index.css" rel="stylesheet">
     <link href="/static/css/m.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/file_list.css">
     <script src="/static/js/modernizr.js"></script>
     <script src="/static/js/jquery-2.1.1.min.js"></script>
     <script src="/static/js/banner.js"></script>
@@ -36,7 +38,18 @@
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
             <li><a href="/index">网站首页</a></li>
-            <li><a href="/files">资料下载</a></li>
+            <li class="dropdown">
+                <a href="/files" style="margin: 0; padding: 0">资料下载</a>
+                <div class="dropdown-content">
+{#                    {% for transferfile_category in transferfile_categorys %}#}
+{#                        <a href="#">{{ transferfile_category.name }}</a>#}
+{#                    {% endfor %}#}
+                    <a href="files/">Web前端</a>
+                    <a href="files/">后端框架</a>
+                    <a href="files/">Python基础</a>
+                    <a href="files/">网络编程及数据库</a>
+                </div>
+            </li>
             <li><a href="tag_list.html">学无止境</a></li>
             <li><a href="info.html">经验分享</a></li>
             <li><a href="shareinfo.html">分类区</a></li>

@@ -21,11 +21,9 @@
             <h2 class="hometitle">
                 <span>
                     {% for category in categorys %}
-                            <a href="/index?cg={{ category.id }}">
-                                {{ category.name }}
-                            </a>
+                        <a href="javascript:void(0)" class="category_skip">{{ category.name }}</a>
                     {% endfor %}
-                    <a href="/index?cg=0">
+                    <a href="javascript:void(0)" class="category_skip">
                                 首席推荐
                     </a>
                 </span>特别推荐

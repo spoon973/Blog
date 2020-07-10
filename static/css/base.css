@@ -12,13 +12,13 @@ a { text-decoration: none; color: #555 }
 .f_r { float: right }
 .line46 { height: 46px; width: 100% }
 /* header */
-header { width: 100%; color: #FFF; background: #333; line-height: 46px; overflow: hidden; position: fixed; top: 0; z-index: 100 }
+header { width: 100%; color: #FFF; background: #333; line-height: 46px; position: fixed; top: 0; z-index: 100 }
 .logo { float: left; font-size: 22px }
 #mnav { width: 1100px; margin: auto }
 #mnav a { color: #FFF }
 #mnavh { display: none; width: 30px; height: 40px; float: right; text-align: center; padding: 0 5px }
 #starlist { float: right;  }
-#starlist li { float: left; display: block; padding: 0 0 0 40px; font-size: 16px }
+#starlist li { float: left; display: block; padding: 0 0 0 40px; font-size: 16px;}
 .navicon { display: block; position: relative; width: 30px; height: 5px; background-color: #FFFFFF; margin-top: 20px }
 .navicon:before, .navicon:after { content: ''; display: block; width: 30px; height: 5px; position: absolute; background: #FFFFFF; -webkit-transition-property: margin, -webkit-transform; transition-property: margin, -webkit-transform; transition-property: margin, transform; transition-property: margin, transform, -webkit-transform; -webkit-transition-duration: 300ms; transition-duration: 300ms; }
 .navicon:before { margin-top: -10px; }

@@ -21,3 +21,9 @@ def download(request):
     response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment;filename="{}"'.format(file_name)
     return response
+
+def text(request):
+    return render(request, 'text.html')
+
+def text1(request):
+    return render(request, 'text1.html')
