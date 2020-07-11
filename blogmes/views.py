@@ -10,11 +10,13 @@ from blogmes.models import Specific_Post, Tag, Category, Banner_Post
 # Create your views here.
 # 创建全局变量,记录当前博客页面的页数
 index_page = None
+cookie_count = 0
 
 def index(request, pindex=None):
     '''首页视图'''
     # 使用全局变量
     global index_page
+    global session_count
     # 获取请求中的pindex信息
     try:  # 如果pindex为触发异常,except捕获异常
         # 获取index页面的内容
@@ -61,22 +63,24 @@ def index(request, pindex=None):
     return render(request, 'blogmes/index.html', mes)
 
 def index_category(request):
+    global cookie_count
+    # 声明全局变量
     # 获取ajax中category_name参数的内容
     category_name = request.GET.get('category_name')
     category_name = "".join(category_name.split())
-    print('----------->', category_name)
     try:
         # 清除seesion信息
         request.session.clear()
     except:
         pass
-    # 设置cookie信息
-    # response.set_cookie('category_name', category_name)
+    response = redirect('/index')
+    response.set_cookie('cookie_count', cookie_count)
+    cookie_count += 1
     # 设置session信息
     request.session['category_name'] = category_name
     # 设置session关闭窗口及删除
-    request.session.set_expiry(0)
-    return redirect('/index')
+    # request.session.set_expiry(0)
+    return response
 
 def banner(request, bindex):
     '''轮播图视图处理'''

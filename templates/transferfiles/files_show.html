@@ -3,10 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <title>资料下载页</title>
+    <style>
+        body{
+            background: #ffffff url("/static/images/sky.jpg") no-repeat bottom fixed;
+        }
+        .box{
+            margin: 33px auto;
+            width: 80%;
+        }
+        .file_list{
+            margin: 0;
+            padding: 0;
+        }
+        .box .file_list li{
+            list-style: none;
+            position: relative;
+            border: 0.5px #666 solid;
+            height: 60px;
+            width: 80%;
+            margin: 10px auto 0;
+        }
+        .logo{
+            height: 40px;
+            width: 40px;
+            margin: 10px;
+        }
+        .title{
+            position: absolute;
+            top: 10px;
+            height: 40px;
+            width: 66%;
+            left: 8%;
+            font: normal 18px/40px "Microsoft YaHei";
+            text-align: center;
+            cursor:pointer;
+        }
+        .btn{
+            border: 0;
+            border-radius:5%;
+            position: absolute;
+            width:99px;
+            height: 30px;
+            top: 15px;
+            right: 6%;
+            font: normal 18px/30px "Consolas";
+            color: #ffffff;
+            background-color: #1e8ec5;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn:hover{
+            color: red;
+            cursor:pointer;
+        }
+    </style>
+    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.file_list li').each(function () {
+                floader_cate = $(this).attr("class");
+                switch (floader_cate) {
+                    case "Z":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/zip.png");
+                        $(this).find(".title").attr("title", "压缩包文件");
+                        break;
+                    case "T":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/txt.png");
+                        $(this).find(".title").attr("title", "文本文件");
+                        break;
+                    case "PT":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/ppt.png");
+                        $(this).find(".title").attr("title", "PPT文件");
+                        break;
+                    case "PF":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/pdf.png");
+                        $(this).find(".title").attr("title", "PDF文件");
+                        break;
+                    case "W":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/word.png");
+                        $(this).find(".title").attr("title", "Word文档文件");
+                        break;
+                    case "H":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/html.png");
+                        $(this).find(".title").attr("title", "HTML文件");
+                        break;
+                    case "E":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/excel.png");
+                        $(this).find(".title").attr("title", "EXCEL表格");
+                        break;
+                    case "M":
+                        $(this).find(".logo").attr("src", "/static/images/file_logo/markdown.png");
+                        $(this).find(".title").attr("title", "MarkDown文件");
+                        break;
+                    default:
+                        $(this).find(".logo").css("src", "/static/images/file_logo/floader.png");
+                        $(this).find(".title").attr("title", "其他文件类型");
+                        break;
+                }
+            })
+        })
+    </script>
 </head>
+
 <body>
-    {% for file in files %}
-        <a href="download?file_url={{ file.file }}">{{ file.name }}</a>
-    {% endfor %}
+    <div class="box">
+    <ul class="file_list">
+        {% for file in files %}
+            <li class="{{ file.floader_cate }}">
+                <img src="/static/images/file_logo/floader.png" alt="文件logo" class="logo">
+                <e class="title" title="文件类型">{{ file.name }}</e>
+                <a href="/files/7?file_url={{ file.file }}" class="btn">下载</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 </body>
+
 </html>

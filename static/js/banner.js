@@ -3,8 +3,15 @@ $(function () {
     $oUl = $oPic.find('ul')[0];
     $oUl.innerHTML += $oUl.innerHTML;
 
+    $cookie_count = $.cookie("cookie_count");
+    if ($cookie_count % 2 === 0){
+        iSpeed = -1.5;
+    }else{
+        iSpeed = 1.5;
+    }
+
     var iLeft = 0;
-    iSpeed = 0;
+
     var iNowspeed = 0;
 
     $('.category_skip').click(function () {
