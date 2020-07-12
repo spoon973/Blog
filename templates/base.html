@@ -16,6 +16,8 @@
     <script src="/static/js/jquery-2.1.1.min.js"></script>
     <script src="/static/js/jquery.cookie.js"></script>
     <script src="/static/js/banner.js"></script>
+    {% block css_js %}
+    {% endblock css_js %}
     <script>
         window.onload = function ()
         {
@@ -65,7 +67,7 @@
 
     {% block rightbox %}
         <div class="rightbox">
-        <div class="search">
+            <div class="search">
           <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
             <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
             <input name="show" value="title" type="hidden">
@@ -74,55 +76,19 @@
             <input name="Submit" class="input_submit" value="搜索" type="submit">
           </form>
         </div>
-        <div class="paihang">
-          <h2 class="ab_title"><a href="/">本栏推荐</a></h2>
-          <ul>
-            <li><b><a href="/" target="_blank">住在手机里的朋友</a></b>
-              <p>对于刚毕业的学生来说，想学习建网站，掌握一技之长，最简单的入门无学...</p>
-            </li>
-            <li><b><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></b>
-              <p>对于刚毕业的学生来说，想学习建网站，掌握一技之长，最简单的入门...</p>
-            </li>
-            <li><b><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码</a></b>
-              <p>.先前发表过一篇文章《如果要学习web前端开发，需要学习什么？》</p>
-            </li>
-            <li><b><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></b>
-              <p>对于刚毕业的学生来说，.需要学习什么？》</p>
-            </li>
-            <li><b><a href="/" target="_blank">你面对的是生活而不是手机</a></b>
-              <p>.最简单的入门无非就是学会html和css，先前发表过一篇文章...</p>
-            </li>
-          </ul>
-          <div class="ad"><img src="/static/images/ad300x100.jpg"></div>
+            {% block paihang %}
+                <div class="paihang">
+                    <h2 class="ab_title"><a href="/">本栏推荐</a></h2>
+                    <ul>
+                        <li><b><a href="/" target="_blank">住在手机里的朋友</a></b>
+                            <p>对于刚毕业的学生来说，想学习建网站，掌握一技之长，最简单的入门无学...</p>
+                        </li>
+                    </ul>
+                    <div class="ad"><img src="/static/images/banner02.jpg"></div>
+                </div>
+            {% endblock %}
+
         </div>
-        <div class="paihang">
-          <h2 class="ab_title"><a href="/">点击排行</a></h2>
-          <ul>
-            <li><b><a href="/" target="_blank">住在手机里的朋友</a></b>
-              <p>对于刚毕业的学生来说，想学习建网站，掌握一技之长，最简单的入门无学...</p>
-            </li>
-            <li><b><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></b>
-              <p>对于刚毕业的学生来说，想学习建网站，掌握一技之长，最简单的入门...</p>
-            </li>
-            <li><b><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码</a></b>
-              <p>.先前发表过一篇文章《如果要学习web前端开发，需要学习什么？》</p>
-            </li>
-            <li><b><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></b>
-              <p>对于刚毕业的学生来说，.需要学习什么？》</p>
-            </li>
-            <li><b><a href="/" target="_blank">你面对的是生活而不是手机</a></b>
-              <p>.最简单的入门无非就是学会html和css，先前发表过一篇文章...</p>
-            </li>
-          </ul>
-          <div class="ad"><img src="/static/images/ad01.jpg"></div>
-        </div>
-        <div class="weixin">
-          <h2 class="ab_title">微信关注</h2>
-          <ul>
-            <img src="/static/images/wx.jpg">
-          </ul>
-        </div>
-      </div>
     {% endblock rightbox %}
 </article>
 <footer>

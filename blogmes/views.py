@@ -9,29 +9,11 @@ from blogmes.models import Specific_Post, Tag, Category, Banner_Post
 
 # Create your views here.
 # 创建全局变量,记录当前博客页面的页数
-index_page = None
 cookie_count = 0
 
 def index(request, pindex=None):
     '''首页视图'''
-    # 使用全局变量
-    global index_page
-    global session_count
-    # 获取请求中的pindex信息
-    try:  # 如果pindex为触发异常,except捕获异常
-        # 获取index页面的内容
-        pindex = int(pindex)
-        # 将当前页面的值赋值给全局变量,以备推荐路径使用
-        index_page = pindex
-    except:
-        # 默认pindex为首页
-        pindex = 1
-        index_page = pindex
-
     category_name = request.session.get('category_name', "首席推荐")
-
-    print('------>', category_name)
-
     if category_name == "首席推荐":
         # 正常查询推荐文章
         recommend_posts = Specific_Post.objects.order_by('-read')
@@ -50,16 +32,13 @@ def index(request, pindex=None):
     categorys = Category.objects.all()
     # 获取排行榜文章
     Ranking_posts = Specific_Post.objects.order_by('-read')
-    # 分页，每页显示7条信息
-    paginator = Paginator(new_posts, 7)
-    # 获取当前页面的对象
-    page =paginator.page(pindex)
     # 创建变量，保存返回页面的数据
-    mes = {'page': page,  # 分页
+    mes = {'page': new_posts,  # 分页
            'Ranking_posts': Ranking_posts,  # 排行
            'recommend_posts': recommend_posts,  # 分类展示文章
            'categorys': categorys,  # 所有分类对象
            'ban_posts': ban_posts}  # 轮播图文章
+
     return render(request, 'blogmes/index.html', mes)
 
 def index_category(request):
@@ -102,18 +81,21 @@ def particulars(request):
         id = request.GET.get('id')
         # 根据id查询数据库数据
         post = Specific_Post.objects.get(id=id)
+        # 使用markdown格式进行展示文章详情页
         post.content = markdown.markdown(post.content.replace("\r\n", '  \n'),
                                   extensions=[
                                       'markdown.extensions.extra',
                                       'markdown.extensions.codehilite',
                                       'markdown.extensions.toc',
                                   ],safe_mode=True,enable_attributes=False)
+        # 通过文章查询该文章的分类,再通过分类查询该分类下的前7篇文章,并通过阅读量进行展现
+        category_posts = post.category.specific_post_set.order_by('-read')[:7]
         # 查询数据库该模型类的最大值
         max_id = Specific_Post.objects.aggregate(Max('id'))
         # 查询数据库该模型类的最小值
         min_id = Specific_Post.objects.aggregate(Min('id'))
         # 创建变量保存返给页面的数据
-        mes = {'post': post, 'max_id': max_id, 'min_id': min_id}
+        mes = {'post': post, 'category_posts': category_posts, 'max_id': max_id, 'min_id': min_id}
         return render(request, 'blogmes/post_info.html', mes)
 
 def tag(request):
@@ -128,6 +110,7 @@ def tag(request):
         category = tag.category
         # 查询对应的文章
         posts = tag.specific_post_set.all()
+        read_posts = tag.specific_post_set.order_by('-read')[:7]
         # 创建mes字典，存放返回html的数据
         mes = {}
         # 判断category类别是否为空
@@ -135,6 +118,7 @@ def tag(request):
             mes['category'] = category
         # 向mes字典增添数据
         mes['posts'] = posts
+        mes['read_posts'] = read_posts
         mes['tag'] = tag
         # 返回页面
         return render(request, 'blogmes/tag_list.html', mes)
@@ -147,11 +131,13 @@ def category(request):
         category_id = request.GET.get('id')
         # 通过传过来的标签id值查询到标签模型中的对象
         category = Category.objects.get(id=category_id)
+        # 根据分类查询该分类的前7篇文章,并按照阅读量降序展示
+        category_posts = category.specific_post_set.order_by('-read')[:7]
         # 查询对应的标签
         tags = category.tag_set.all()
         # 查询对应的文章
         posts = category.specific_post_set.all()
-        mes = {'category': category, 'tags': tags, 'posts': posts}
+        mes = {'category': category, 'category_posts': category_posts,'tags': tags, 'posts': posts}
         return render(request, 'blogmes/category_list.html', mes)
 
 

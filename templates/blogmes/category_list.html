@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+
 {% block leftbox %}
     <div class="leftbox">
         <div class="newblogs">
         <h2 class="hometitle">
             <span>
                 {% for tag in tags %}
-                    <a href="/jstt/bj/">{{ tag.name }}</a>
+                    <a href="tag?id={{ tag.id }}">{{ tag.name }}</a>
                 {% endfor %}
             </span>{{ category.name }}
         </h2>
@@ -24,3 +25,17 @@
     </div>
     </div>
 {% endblock leftbox %}
+
+{% block paihang %}
+    <div class="paihang">
+        <h2 class="ab_title"><a href="javascript:vode(0)">本栏推荐</a></h2>
+        <ul>
+            {% for category_post in category_posts %}
+                <li><b><a href="post?id={{ category_post.id }}" target="_blank">{{ category_post.title }}</a></b>
+                    <p>{{ category_post.excerpt }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="ad"><img src="/static/images/banner02.jpg"></div>
+    </div>
+{% endblock paihang%}

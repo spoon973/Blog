@@ -1,134 +1,28 @@
-{% extends "base.html" %}
-{% block pic %}
-    <div class="pics">
-        <ul>
-            {% for ban_post in ban_posts %}
-                <li>
-                    <i>
-                        <a href="/banner/{{ ban_post.id }}">
-                            <img src="/media/{{ ban_post.pic }}">
-                        </a>
-                    </i>
-                    <span>{{ ban_post.title }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock pic %}
-{% block leftbox %}
-    <div class="leftbox">
-        <div class="tuijian">
-            <h2 class="hometitle">
-                <span>
-                    {% for category in categorys %}
-                        <a href="javascript:void(0)" class="category_skip">{{ category.name }}</a>
-                    {% endfor %}
-                    <a href="javascript:void(0)" class="category_skip">
-                                首席推荐
-                    </a>
-                </span>特别推荐
-            </h2>
-            <ul>
-                {% for recommend_post in recommend_posts|slice:3 %}
-                    <a href="/post?id={{ recommend_post.id }}">
-                        <li>
-                            <div class="tpic"><img src="media/{{ recommend_post.pic }}"></div>
-                            <b>{{ recommend_post.title }}</b><span>{{ recommend_post.excerpt }}</span><a href="/post?id={{ recommend_post.id }}" class="readmore">阅读原文</a>
-                        </li>
-                    </a>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="newblogs">
-            <h2 class="hometitle">最新文章</h2>
-            <ul id="list">
-                {% for post in page %}
-                    <li>
-                        <h3 class="blogtitle"><a href="/" target="_blank" >{{ post.title }}</a></h3>
-                        <div class="bloginfo"><span class="blogpic"><a href="/post?id={{ post.id }}" title=""><img src="media/{{ post.pic }}" alt="文章页面图片"/></a></span>
-                          <a href="/post?id={{ post.id }}"><p>{{ post.excerpt }}...</p></a>
-                        </div>
-                        <div class="autor"><span class="lm f_l"><a href="/">王鹏飞个人博客</a></span><span class="dtime f_l">{{ post.create_time }}</span><span class="viewnum f_l">浏览（<a href="/">{{ post.read }}</a>）</span><span class="pingl f_l">喜欢（<a href="/">{{ post.like }}</a>）</span><span class="f_r"><a href="/post?id={{ post.id }}" class="more">阅读原文</a></span></div>
-                    </li>
-                {% endfor %}
-            </ul>
-            <div class="page_id"
-                 style="text-align: center;
-                        font:normal 18px/16px 'Microsoft YaHei';
-                        height: 18px">
-            {# 判断是否有上一页 #}
-            {% if page.has_previous %}
-                <a href="/index{{ page.previous_page_number }}">&lt;上一页</a>
-            {% endif %}
-
-            {# 遍历显示页码的链接 #}
-            {% for pindex in page.paginator.page_range %}
-                {# 判断是否是当前页 #}
-                {% if pindex == page.number %}
-                    {{ pindex }}
-                {% else %}
-                    <a href="/index{{ pindex }}">{{ pindex }}</a>
-                {% endif %}
-            {% endfor %}
-
-            {# 判断是否有下一页 #}
-            {% if page.has_next %}
-                <a href="/index{{ page.next_page_number }}">下一页&gt;</a>
-            {% endif %}
-        </div>
-        </div>
-    </div>
-{% endblock leftbox %}
-{% block rightbox %}
-    <div class="rightbox">
-    <div class="aboutme">
-      <h2 class="ab_title">关于我</h2>
-      <div class="avatar"><img src="/static/images/b04.jpg" /></div>
-      <div class="ab_con">
-        <p>网名：DanceSmile | 即步非烟</p>
-        <p>职业：Web前端设计师、网页设计 </p>
-        <p>籍贯：四川省―成都市</p>
-        <p>邮箱：dancesmiling@qq.com</p>
-      </div>
-    </div>
-    <div class="blank"></div>
-    <div class="search">
-      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
-        <input name="show" value="title" type="hidden">
-        <input name="tempid" value="1" type="hidden">
-        <input name="tbname" value="news" type="hidden">
-        <input name="Submit" class="input_submit" value="搜索" type="submit">
-      </form>
-    </div>
-    <div class="paihang">
-      <h2 class="ab_title"><a href="/">点击排行</a></h2>
-      <ul>
-          {% for recommend_post in Ranking_posts|slice:5 %}
-              <li  style="height: 122px;overflow: hidden">
-                  <b>
-                      <a href="/post?id={{ recommend_post.id }}" target="_blank">{{ recommend_post.title }}</a>
-                  </b>
-                  <p>
-                      <i><img src="media/{{ recommend_post.pic }}"></i>
-                      <p>{{ recommend_post.excerpt }}</p>
-                  </p>
-              </li>
-          {% endfor %}
-      </ul>
-    </div>
-    <div class="links">
-      <h2 class="ab_title">友情链接</h2>
-      <ul>
-        <li><a href="/">杨青个人博客</a></li>
-        <li><a href="/">杨青个人博客</a></li>
-        <li><a href="/">杨青个人博客</a></li>
-      </ul>
-    </div>
-    <div class="weixin">
-      <h2 class="ab_title">微信关注</h2>
-      <ul>
-        <img src="/static/images/wx.jpg">
-      </ul>
-    </div>
-{% endblock rightbox %}
+{% if is_paginated %}
+{% load i18n %}
+<div class="pagination">
+<ul>
+    {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}{{ hashtag }}" class="prev">‹‹ {% trans "previous" %}</a></li>
+    {% else %}
+        <li class="disabled"><a href="#">‹‹ {% trans "previous" %}</a></li>
+    {% endif %}
+    {% for page in pages %}
+        {% if page %}
+            {% ifequal page page_obj.number %}
+                <li class="active"><a href="#">{{ page }}</a></li>
+            {% else %}
+                <li><a href="?page={{ page }}{{ getvars }}{{ hashtag }}" class="page">{{ page }}</a></li>
+            {% endifequal %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}" class="next">{% trans "next" %} ››</a></li>
+    {% else %}
+        <li class="disabled"><a href="#">{% trans "next" %} ››</a></li>
+    {% endif %}
+</ul>
+</div>
+{% endif %}
