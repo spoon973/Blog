@@ -25,7 +25,7 @@ SECRET_KEY = 'mbm1bynqapgi#^$%-d+738wp4a$d3_2ayy#9gn)+w%7w9fm-&k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.wpfei.cn']
 
 
 # Application definition
@@ -143,6 +143,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')  #uploads必须存在，且在项目目录下
 MEDIA_URL = '/media/'   #你上传的文件和图片会默认存在/uploads/editor下

@@ -2,90 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db55fffd-c34c-40e4-9d59-d956b6414727" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blogmes/search_indexes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/blogmes/knowledge_is_infinite.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/search/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogmes/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogmes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogmes/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogmes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogmes/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/ad01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/ad300x100.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/alipay.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/alipayimg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/b01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/b02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/b03.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/b04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/b04.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/b05.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/b06.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/b07.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/book.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/grwx.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/myself.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/sky.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/tbg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/v1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/v2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/wechat.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/weipayimg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/wx.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/wx.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/zsm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogmes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogmes/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogmes/post_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogmes/post_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/file_show.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/share.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shareinfo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/transferfiles/files_show.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/transferfiles/files_show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transferfiles/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/transferfiles/migrations/0002_auto_20200711_1623.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/02python_basic.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/Mysql.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/data_struct.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/data_struct.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/data_struct.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/day01.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/day02.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/text.ppt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/text.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/地图.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/地图.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/地图_OiEO6mf.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/数据分析2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/测试中文.ppt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/测试文稿.ppt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/File/测试文稿_itrAube.ppt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/bannner_mes/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/bannner_mes/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/bannner_mes/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/bannner_mes/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/bannner_mes/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/bannner_mes/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/2_CGoO7PM.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/2_ZAhX9W6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/3_RadQOFd.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/4_QOVY5wU.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/4_aOuEIxO.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/4_y1gI1Jz.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/5_bIpWWoF.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/6_567OA99.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/9_94JE2rp.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/blogmes/计算机.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Blog/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1107">
-              <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+            <state relative-caret-position="356">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -224,11 +141,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/blogmes/knowledge_is_infinite.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="459">
+              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
             </state>
           </provider>
         </entry>
@@ -327,7 +244,6 @@
         <option value="$PROJECT_DIR$/static/css/index.css" />
         <option value="$PROJECT_DIR$/templates/pagination/pagination自定义.html" />
         <option value="$PROJECT_DIR$/templates/pagination/pagination.html" />
-        <option value="$PROJECT_DIR$/Blog/settings.py" />
         <option value="$PROJECT_DIR$/Blog/urls.py" />
         <option value="$PROJECT_DIR$/templates/search/indexes/blogmes/blogmes_text" />
         <option value="$PROJECT_DIR$/templates/search.html" />
@@ -349,10 +265,11 @@
         <option value="$PROJECT_DIR$/templates/blogmes/post_info.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/blogmes/knowledge_is_infinite.html" />
+        <option value="$PROJECT_DIR$/Blog/settings.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="460" />
     <option name="y" value="110" />
     <option name="width" value="1225" />
@@ -371,6 +288,11 @@
           <expand>
             <path>
               <item name="Blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Blog" type="462c0819:PsiDirectoryNode" />
               <item name="Blog" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -494,15 +416,16 @@
       <workItem from="1594528483950" duration="19649000" />
       <workItem from="1594556249592" duration="279000" />
       <workItem from="1594595421785" duration="10430000" />
-      <workItem from="1594606769403" duration="19229000" />
+      <workItem from="1594606769403" duration="19708000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="285146000" />
+    <option name="totallyTimeSpent" value="285625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1735925" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -789,13 +712,6 @@
     <entry file="file://$PROJECT_DIR$/templates/search_result.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Blog/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1107">
-          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blogmes/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -922,8 +838,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/blogmes/knowledge_is_infinite.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="459">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Blog/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
