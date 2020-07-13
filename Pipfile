@@ -1,6 +1,6 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
+url = "http://pypi.douban.com/simple/"
 verify_ssl = true
 
 [dev-packages]
@@ -9,6 +9,7 @@ verify_ssl = true
 django = "==2.2.3"
 pillow = "*"
 django-tinymce = "*"
+gunicorn = {index = "https://pypi.douban.com/simple/", version = "*"}
 
 [requires]
 python_version = "3.6"
