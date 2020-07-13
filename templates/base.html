@@ -13,6 +13,8 @@
     <link href="/static/css/index.css" rel="stylesheet">
     <link href="/static/css/m.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/file_list.css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/markdown.css">
     <script src="/static/js/modernizr.js"></script>
     <script src="/static/js/jquery-2.1.1.min.js"></script>
     <script src="/static/js/jquery.cookie.js"></script>
@@ -96,5 +98,7 @@
     <p>京ICP备20004714号-1</p>
     <p> CopyRight © 2020 <a href="/">王鹏飞个人博客</a> <a href="/">All Rights Reserved</a> </p>
 </footer>
+{% block markdown %}
+{% endblock markdown %}
 </body>
 </html>

@@ -1,8 +1,6 @@
-from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render,redirect
 from django.db.models import Max, Min
 from django.core.paginator import Paginator
-from transferfiles.models import Category as TransferFileCategory
 import markdown
 
 from blogmes.models import Specific_Post, Tag, Category, Banner_Post

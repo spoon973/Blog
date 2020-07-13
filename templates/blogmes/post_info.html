@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load filters %}
-
+{#{% block css_js %}#}
+{#    #}
+{#{% endblock css_js %}#}
 {% block leftbox %}
     <div class="leftbox">
         <div class="infos">
@@ -94,3 +96,12 @@
         <div class="ad"><img src="/static/images/banner02.jpg"></div>
     </div>
 {% endblock paihang%}
+
+{% block markdown %}
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+{% endblock markdown %}

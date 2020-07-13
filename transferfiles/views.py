@@ -2,7 +2,7 @@ import re
 from django.shortcuts import render
 from django.utils.encoding import escape_uri_path
 
-from transferfiles.models import FileStore, Category
+from transferfiles.models import Category
 from django.http import FileResponse
 
 # Create your views here.
@@ -14,7 +14,6 @@ def show(request, file_category):
 
 def download(request):
     file_url = request.GET.get('file_url')
-    print('--------->', file_url)
     file_name = re.match("[^/]+(/[^ ]*)", file_url).group(1)[1:].encode('utf-8')
     file_name = file_name.decode('utf-8')
 
