@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'dj_pagination',  # 添加django插件进行分页
     'mdeditor',  # 添加编辑器应用
     'blogmes',  # 博客具体数据应用
-    'transferfiles'  # 上传/下载文件应用
+    'transferfiles'  # 上传 /下载文件应用
 ]
 
 MIDDLEWARE = [
@@ -106,6 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PAGINATION_DEFAULT_PAGINATION = 7
+PAGINATION_DEFAULT_WINDOW = 2
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
