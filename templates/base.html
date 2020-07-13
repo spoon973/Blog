@@ -8,6 +8,7 @@
     <meta name="description" content="王鹏飞个人博客" />
     <meta http-equiv="refresh" content="86400">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Shortcut Icon" href="/static/images/f.ico" type="image/x-icon" />
     <link href="/static/css/base.css" rel="stylesheet">
     <link href="/static/css/index.css" rel="stylesheet">
     <link href="/static/css/m.css" rel="stylesheet">
@@ -40,7 +41,7 @@
         <div class="logo"><a href="/">王鹏飞个人博客</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
-            <li><a href="/index">网站首页</a></li>
+            <li><a href="/">网站首页</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" style="margin: 0; padding: 0">资料下载</a>
                 <div class="dropdown-content">
@@ -50,11 +51,11 @@
                     <a href="/files/net">网络编程及数据库</a>
                 </div>
             </li>
-            <li><a href="tag_list.html">学无止境</a></li>
-            <li><a href="info.html">经验分享</a></li>
-            <li><a href="shareinfo.html">分类区</a></li>
-            <li><a href="/about">关于我</a></li>
-            <li><a href="gbook.html">留言</a></li>
+            <li><a href="/knowledge">学无止境</a></li>
+            <li><a href="javascript:void(0)">经验分享</a></li>
+            <li><a href="javascript:void(0)">分类区</a></li>
+            <li><a href="javascript:void(0)">关于我</a></li>
+            <li><a href="javascript:void(0)">留言</a></li>
         </ul>
     </div>
 </header>
@@ -68,7 +69,7 @@
     {% block rightbox %}
         <div class="rightbox">
             <div class="search">
-          <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+          <form action="javascript:void(0)" method="post" name="searchform" id="searchform">
             <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
             <input name="show" value="title" type="hidden">
             <input name="tempid" value="1" type="hidden">
@@ -92,7 +93,8 @@
     {% endblock rightbox %}
 </article>
 <footer>
-  <p>Design by <a href="/">王鹏飞个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+    <p>京ICP备20004714号-1</p>
+    <p> CopyRight © 2020 <a href="/">王鹏飞个人博客</a> <a href="/">All Rights Reserved</a> </p>
 </footer>
 </body>
 </html>

@@ -11,7 +11,7 @@ from blogmes.models import Specific_Post, Tag, Category, Banner_Post
 # 创建全局变量,记录当前博客页面的页数
 cookie_count = 0
 
-def index(request, pindex=None):
+def index(request):
     '''首页视图'''
     category_name = request.session.get('category_name', "首席推荐")
     if category_name == "首席推荐":
@@ -81,6 +81,7 @@ def particulars(request):
         id = request.GET.get('id')
         # 根据id查询数据库数据
         post = Specific_Post.objects.get(id=id)
+
         # 使用markdown格式进行展示文章详情页
         post.content = markdown.markdown(post.content.replace("\r\n", '  \n'),
                                   extensions=[
@@ -95,7 +96,10 @@ def particulars(request):
         # 查询数据库该模型类的最小值
         min_id = Specific_Post.objects.aggregate(Min('id'))
         # 创建变量保存返给页面的数据
-        mes = {'post': post, 'category_posts': category_posts, 'max_id': max_id, 'min_id': min_id}
+        mes = {'post': post,
+               'max_id': max_id,
+               'min_id': min_id,
+               'category_posts': category_posts}
         return render(request, 'blogmes/post_info.html', mes)
 
 def tag(request):
@@ -140,4 +144,6 @@ def category(request):
         mes = {'category': category, 'category_posts': category_posts,'tags': tags, 'posts': posts}
         return render(request, 'blogmes/category_list.html', mes)
 
+def knowledge(request):
+    return render(request, 'blogmes/knowledge_is_infinite.html')
 

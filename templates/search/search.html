@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block leftbox %}
+    <div class="newblogs">
+            <h2 class="hometitle">搜索文章 &nbsp; > &nbsp; {{ query }}</h2>
+            <ul id="list">
+                {% load pagination_tags %}
+                {% autopaginate page 66%}
+                {% for post in page %}
+                    <li>
+                        <h3 class="blogtitle"><a href="/post?id={{ post.object.id }}" target="_self" >{{ post.object.title }}</a></h3>
+                        <div class="bloginfo"><span class="blogpic"><a href="/post?id={{ post.object.id }}" title=""><img src="../media/{{ post.object.pic }}" alt="文章页面图片"/></a></span>
+                          <a href="/post?id={{ post.object.id }}"><p>{{ post.object.excerpt }}...</p></a>
+                        </div>
+                        <div class="autor"><span class="lm f_l"><a href="/">王鹏飞个人博客</a></span><span class="dtime f_l">{{ post.object.create_time }}</span><span class="viewnum f_l">浏览（<a href="/">{{ post.object.read }}</a>）</span><span class="pingl f_l">喜欢（<a href="/">{{ post.object.like }}</a>）</span><span class="f_r"><a href="/post?id={{ post.object.id }}" class="more">阅读原文</a></span></div>
+                    </li>
+                {% empty %}
+                    <li>暂无文章</li>
+                {% endfor %}
+            </ul>
+            {% paginate %}
+            {% comment %}
+            <div class="page_id"
+                 style="text-align: center;
+                        font:normal 18px/16px 'Microsoft YaHei';
+                        height: 18px">
+            {# 判断是否有上一页 #}
+            {% if page.has_previous %}
+                <a href="/index{{ page.previous_page_number }}">&lt;上一页</a>
+            {% endif %}
+
+            {# 遍历显示页码的链接 #}
+            {% for pindex in page.paginator.page_range %}
+                {# 判断是否是当前页 #}
+                {% if pindex == page.number %}
+                    {{ pindex }}
+                {% else %}
+                    <a href="/index{{ pindex }}">{{ pindex }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {# 判断是否有下一页 #}
+            {% if page.has_next %}
+                <a href="/index{{ page.next_page_number }}">下一页&gt;</a>
+            {% endif %}
+            </div>
+            {% endcomment %}
+        </div>
+{% endblock %}
+
+{% block rightbox %}
+{% endblock %}

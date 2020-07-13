@@ -101,12 +101,9 @@
     </div>
     <div class="blank"></div>
     <div class="search">
-      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
-        <input name="show" value="title" type="hidden">
-        <input name="tempid" value="1" type="hidden">
-        <input name="tbname" value="news" type="hidden">
-        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      <form action="/search/" method="get" name="searchform" id="searchform" target="_blank">
+        <input name="q" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+        <input class="input_submit" value="搜索" type="submit">
       </form>
     </div>
     <div class="paihang">
@@ -138,5 +135,6 @@
       <ul>
         <img src="/static/images/wx.jpg">
       </ul>
+    </div>
     </div>
 {% endblock rightbox %}

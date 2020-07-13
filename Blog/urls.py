@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # 添加富文本tinyme路径
     path('mdeditor/', include('mdeditor.urls')),
+    # 添加搜索的配置路径
+    path('search/', include('haystack.urls')),
     # blogmes应用的urls路径
     path('', include(('blogmes.urls', 'blogmes'), namespace='blogmes')),
     path('files/', include(('transferfiles.urls', 'transferfiles'), namespace='transferfiles')),

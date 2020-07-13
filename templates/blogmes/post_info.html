@@ -16,15 +16,15 @@
                 {% endfor %}
             </div>
 
-            <div class="news_about"><strong>简介</strong>曾经有站长找我求助，他说他不知道该怎么办，自己做出来的网站，不仅没有得到大家的认可，反而让大家给他开了一个评判大会。他自己认为已经是做的最好的，却遭受大家无情的指责是“垃圾”作品。</div>
+            <div class="news_about">注释:无</div>
             <div class="news_infos">
               {{ post.content|safe }}
             </div>
 
           </div>
           <div class="share">
-          <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&amp;id=20&amp;down=5"></script>13</b>)</p>
-          <p class="dasbox"><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a></p>
+          <p class="diggit"><a href="JavaScript:void(0)"> 很赞哦！ </a></p>
+          <p class="dasbox"><a href="javascript:void(0)" class="dashang" title="打赏，支持一下">打赏本站</a></p>
           <div class="hide_box" style="display: none;"></div>
           <div class="shang_box" style="display: none;"> <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">关闭</a>
             <div class="shang_tit">
@@ -71,17 +71,11 @@
         <div class="otherlink">
           <h2>相关文章</h2>
           <ul>
-            <li><a href="/" title="云南之行――丽江古镇玉龙雪山">云南之行――丽江古镇玉龙雪山</a></li>
-            <li><a href="/" title="云南之行――大理洱海一日游">云南之行――大理洱海一日游</a></li>
-            <li><a href="/" target="_blank">住在手机里的朋友</a></li>
-            <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>
-            <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>
-            <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>
-          </ul>
-        </div>
-        <div class="news_pl">
-          <h2>文章评论</h2>
-          <ul>
+              {% for category_post in category_posts %}
+                  {% if forloop.counter <= 6 %}
+                      <li><a href="/post?id={{ category_post.id }}">{{ category_post.title }}</a></li>
+                  {% endif %}
+              {% endfor %}
           </ul>
         </div>
       </div>
