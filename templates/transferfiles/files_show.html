@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,7 +59,7 @@
             cursor:pointer;
         }
     </style>
-    <script src="/static/js/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
     <script>
         $(function () {
             $('.file_list li').each(function () {
@@ -111,7 +112,7 @@
     <ul class="file_list">
         {% for file in files %}
             <li class="{{ file.floader_cate }}">
-                <img src="/static/images/file_logo/floader.png" alt="文件logo" class="logo">
+                <img src="{% static 'images/file_logo/floader.png' %}" alt="文件logo" class="logo">
                 <e class="title" title="文件类型">{{ file.name }}</e>
                 <a href="/files/7?file_url={{ file.file }}" class="btn">下载</a>
             </li>

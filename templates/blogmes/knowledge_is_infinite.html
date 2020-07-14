@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>王鹏飞个人博客</title>
-    <link rel="Shortcut Icon" href="/static/images/f.ico" type="image/x-icon" />
-	<link rel="stylesheet" type="text/css" href="/static/css/test.css">
-	<script type="text/javascript" src= "/static/js/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="/static/js/jquery.mousewheel.js"></script>
+    <link rel="Shortcut Icon" href="{% static 'images/f.ico' %}" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}">
+	<script type="text/javascript" src= "{% static 'js/jquery-2.1.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.mousewheel.js' %}"></script>
 	<script type="text/javascript">
 		$(function(){
 			var $screen = $('.pages_con');
@@ -69,7 +70,7 @@
 
 		<div class="pages page1">
 			<div class="main_con">
-				<div class="left_img"><img src="/static/images/knowledge/Python.png"></div>
+				<div class="left_img"><img src="{% static 'images/knowledge/Python.png' %}"></div>
 				<div class="right_info">
 				Python是目前公认的全球5大流行语言之一，从云计算、大数据到人工智能，Python无处不在，百度、阿里巴巴、腾讯等一系列大公司都在使用Python完成各种任务
 
@@ -79,7 +80,7 @@
 
 		<div class="pages page2">
 			<div class="main_con">
-				<div class="right_img"><img src="/static/images/knowledge/b.png"></div>
+				<div class="right_img"><img src="{% static 'images/knowledge/b.png' %}"></div>
 				<div class="left_info">
 				计算机领域也细分为多个专业，多多少少对数据有一些要求。但是，既然计算机处理的是“信息”，那么“信息”的存取大概就是一个不可回避的问题。尤其是当前计算机的处理能力不断提高的情况下，因此，掌握数据库变得尤为重要。
 				</div>
@@ -89,7 +90,7 @@
 
 		<div class="pages page3">
 			<div class="main_con">
-				<div class="left_img"><img src="/static/images/knowledge/end.png"></div>
+				<div class="left_img"><img src="{% static 'images/knowledge/end.png' %}"></div>
 				<div class="right_info">
 				    hello world作为所有编程语言的起始阶段，占据着无法改变的地位，所有中/英/法/德/美……版本的编程教材中，daohello world总是作为第一个记录于书本之中，所有的编程第一步就在于此了！经典之中的经典！hello world！
 				</div>
@@ -98,7 +99,7 @@
 
 		<div class="pages page4">
 			<div class="main_con">
-				<div class="left_img"><img src="/static/images/knowledge/smart.png"></div>
+				<div class="left_img"><img src="{% static 'images/knowledge/smart.png' %}"></div>
 				<div class="right_info">
 					当前，以人工智能为代表的新一代信息技术正在深刻影响着经济社会的发展进程。7月9日，2020世界人工智能大会云端峰会开幕式在上海世博中心召开，相信中国的未来，必将站在第一梯队上，引领世界的科技潮流，开创新世纪的先河。
 				</div>
@@ -107,7 +108,7 @@
 
 		<div class="pages page5">
 			<div class="main_con">
-				<div class="center_img"><img src="/static/images/knowledge/network.png"></div>
+				<div class="center_img"><img src="{% static 'images/knowledge/network.png' %}"></div>
 			</div>
 
 		</div>

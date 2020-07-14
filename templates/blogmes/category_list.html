@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block leftbox %}
     <div class="leftbox">
         <div class="newblogs">
@@ -36,6 +36,6 @@
                 </li>
             {% endfor %}
         </ul>
-        <div class="ad"><img src="/static/images/banner02.jpg"></div>
+        <div class="ad"><img src="{% static 'images/banner02.jpg' %}"></div>
     </div>
 {% endblock paihang%}

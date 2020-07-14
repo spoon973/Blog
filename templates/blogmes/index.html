@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block pic %}
     <div class="pics">
         <ul>
@@ -91,7 +91,7 @@
     <div class="rightbox">
     <div class="aboutme">
       <h2 class="ab_title">关于我</h2>
-      <div class="avatar"><img src="/static/images/b04.jpg" /></div>
+      <div class="avatar"><img src="{% static 'images/b04.jpg' %}" /></div>
       <div class="ab_con">
         <p>姓名：王鹏飞 </p>
         <p>职业：Python开发工程师 </p>
@@ -133,7 +133,7 @@
     <div class="weixin">
       <h2 class="ab_title">微信关注</h2>
       <ul>
-        <img src="/static/images/wx.jpg">
+        <img src="{% static 'images/wx.jpg' %}">
       </ul>
     </div>
     </div>

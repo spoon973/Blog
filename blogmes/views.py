@@ -11,7 +11,10 @@ cookie_count = 0
 
 def index(request):
     '''首页视图'''
-    category_name = request.session.get('category_name', "首席推荐")
+    try:
+        category_name = request.session.get('category_name', "首席推荐")
+    except:
+        category_name = "首席推荐"
     if category_name == "首席推荐":
         # 正常查询推荐文章
         recommend_posts = Specific_Post.objects.order_by('-read')

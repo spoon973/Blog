@@ -1,4 +1,5 @@
 {%load filters%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +9,17 @@
     <meta name="description" content="王鹏飞个人博客" />
     <meta http-equiv="refresh" content="86400">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="Shortcut Icon" href="/static/images/f.ico" type="image/x-icon" />
-    <link href="/static/css/base.css" rel="stylesheet">
-    <link href="/static/css/index.css" rel="stylesheet">
-    <link href="/static/css/m.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/file_list.css">
+    <link rel="Shortcut Icon" href="{% static 'images/f.ico' %}" type="image/x-icon" />
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'css/m.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/file_list.css' %}">
     <link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/markdown.css">
-    <script src="/static/js/modernizr.js"></script>
-    <script src="/static/js/jquery-2.1.1.min.js"></script>
-    <script src="/static/js/jquery.cookie.js"></script>
-    <script src="/static/js/banner.js"></script>
+    <link rel="stylesheet" href="{% static 'css/markdown.css' %}">
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/banner.js' %}"></script>
     {% block css_js %}
     {% endblock css_js %}
     <script>
@@ -87,7 +88,7 @@
                             <p>对于刚毕业的学生来说，想学习建网站，掌握一技之长，最简单的入门无学...</p>
                         </li>
                     </ul>
-                    <div class="ad"><img src="/static/images/banner02.jpg"></div>
+                    <div class="ad"><img src="{% static 'images/banner02.jpg' %}"></div>
                 </div>
             {% endblock %}
 
