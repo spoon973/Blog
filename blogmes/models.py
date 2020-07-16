@@ -67,7 +67,7 @@ class Specific_Post(Post):
 class Banner_Post(Post):
     '''bannner轮播图文章'''
     # bannner轮播文章图片
-    pic = models.ImageField(verbose_name='轮播图片', db_column="bannner_pic", upload_to='bannner_mes')
+    pic = models.ImageField(verbose_name='轮播图片', db_column="bannner_pic", upload_to='banner_mes')
 
     # 内置可重写函数
     def __str__(self):

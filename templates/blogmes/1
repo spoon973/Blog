@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css_js %}
+    <style>
+	.news_infos h1{
+	     margin: 0 0 18px 0;
+	}
+	.news_infos h2{
+	     margin:10px 0 15px 0;
+	}
+	.news_infos h3{
+            height: 10px 0 14px 0;
+        }
+	.news_infos h4{
+            height: 10px 0 13px 0;
+        }
+	.news_infos h5{
+            height: 10px 0 12px 0;
+        }
+	.news_infos h6{
+            height: 10px 0 11px 0;
+        }
+	.news_infos img{
+	    height: 350px;  
+	    margin: 10px auto;
+	}
+    </style>
+    <script src="{% static 'js/jquery-2.1.1.min.js'  %}"></script>
+    <script>
+	$(function() {
+	    $('.news_infos img').each(function() {
+		alt_name = $(this).prop('alt')
+		alert(alt_name);
+	    })
+	});
+    </script>
+{% endblock css_js %}
+{% block body %}
+<body style="background:#555 url('/static/images/technology.jpg') no-repeat left center fixed">
+{% endblock body %}
+
+{% block leftbox %}
+
+    <div class="banner_leftbox">
+        <div class="infos">
+            <div class="newsview">
+                <h2 class="intitle">您现在的位置是：<a href="/index">网站首页</a>&nbsp;&gt;&nbsp;<a href="#">{{ ban_post.title }}</a></h2>
+                <div class="news_infos">
+                    {{ ban_post.content|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock leftbox %}
+
+{% block rightbox %}
+
+{% endblock rightbox %}
+
+{% block markdown %}
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+{% endblock markdown %}

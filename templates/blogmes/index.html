@@ -48,7 +48,7 @@
                 {% autopaginate page %}
                 {% for post in page %}
                     <li>
-                        <h3 class="blogtitle"><a href="/" target="_blank" >{{ post.title }}</a></h3>
+                        <h3 class="blogtitle"><a href="/post?id={{post.id}}" target="_blank" >{{ post.title }}</a></h3>
                         <div class="bloginfo"><span class="blogpic"><a href="/post?id={{ post.id }}" title=""><img src="media/{{ post.pic }}" alt="文章页面图片"/></a></span>
                           <a href="/post?id={{ post.id }}"><p>{{ post.excerpt }}...</p></a>
                         </div>

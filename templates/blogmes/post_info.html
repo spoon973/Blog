@@ -1,6 +1,45 @@
 {% extends "base.html" %}
 {% load filters %}
 {% load static %}
+{% block css_js %}
+    <style>
+        .news_infos h1{
+             margin: 0 0 18px 0;
+        }
+        .news_infos h2{
+             margin:10px 0 15px 0;
+        }
+        .news_infos h3{
+            height: 10px 0 14px 0;
+        }
+        .news_infos h4{
+            height: 10px 0 13px 0;
+        }
+        .news_infos h5{
+            height: 10px 0 12px 0;
+        }
+        .news_infos h6{
+            height: 10px 0 11px 0;
+        }
+        .news_infos img{
+            margin: 10px auto;
+        }
+    </style>
+    <script src="{% static 'js/jquery-2.1.1.min.js'  %}"></script>
+    <script>
+        $(function() {
+            $('.news_infos img').each(function() {
+                alt_name = $(this).prop('alt');
+                if ( alt_name === "h" ){
+                    $(this).css("height", "500px");
+                    $(this).css("width", "400px");
+                }else{
+                    $(this).css('height', '350px');
+                }
+            })
+        })
+    </script>
+{% endblock css_js %}
 {% block leftbox %}
     <div class="leftbox">
         <div class="infos">
